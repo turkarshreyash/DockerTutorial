@@ -1,0 +1,85 @@
+* Docker: Comprehensive package.
+- Pack our application and run on any machine.
+- Container: Isolated enviornment.
+- Remove the pack/application once used.
+- Many tools use different version.
+- Build, run and ship.
+$ docker-compose up
+$ docker-compose down --rmi all
+
+
+* Container vs VM.
+- VM are hardware abstractions.
+- VM have an OS running.
+- VM require hypervisor (Very familiar territory :D ).
+- Resource intensive.
+- Resource have to be divided.
+
+- Containers give us isolation.
+- Containers are lightweight.
+- Multiple Container can run on OS.
+
+
+* Docker Architecture
+- Client - Server using REST API
+- Container is just a process.
+- Container share a kernel of OS.
+- On Windows we can run Windows and Linux container.
+- On linux we can run on linux container.
+- No mac os support a light wieght linux machine runs on top for support.
+
+
+* Installation.
+
+
+* Development workflow.
+- Take a application and dockerize it.
+- Add a docker file.
+- Docker file includes instructions to package application into a image.
+- Image:
+    - cut down Os.
+    - runtine env (node/python)
+    - application files.
+    - third party libs.
+    - env variables.
+- Image we use to run a container.
+- Container has it's own file system.
+$ docker run
+- Docker registery is like github is to git.
+- We can deploy this container on any node.
+
+
+* Lab
+- To an existing app add 'Dockerfile'
+- FROM instruction is used to import OS and env.
+- COPY is used to include app files.
+- CMD is used to run the app.
+- Docker build give a tg to identitfy. -t
+- To see all images on this machine: docker images or docker image ls.
+- We can push this to Docker registry.
+- To run docker run <REPOSITORY>
+
+
+* Ubuntu.
+- Instead of running docker pull Ubuntu. Do docker run ubuntu.
+- This will run a container but in non-iteractive way.
+- To run a container in interactive way run docker run -it ubuntu,
+- Some usefull commands:
+    - history,
+    - !2 (I already knew !!, !2, !-4 was new for me.)
+
+
+* Ubuntu packager manager (Kinda revision.)
+- apt: Advanced package mananger.
+- apt-get: Older.
+- apt install nano.
+- apt update: Updates database.
+- Use apt list to get all packages.
+- apt remove nano.
+
+
+* Linux (revision.)
+- Everything is a file.
+- /etc: editable text configurations.
+- /var: variable.
+- cat read and output. Can redirect to a file cat file1.txt > file2.txt
