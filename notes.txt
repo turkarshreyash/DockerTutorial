@@ -83,3 +83,75 @@ $ docker run
 - /etc: editable text configurations.
 - /var: variable.
 - cat read and output. Can redirect to a file cat file1.txt > file2.txt
+
+
+* Docker Compose.
+- To remove images, docker image rm 123 343
+- Use docker image -q to get just the image ids.
+- docker container ls -aq.
+- Docker compose is used for multi container application.
+- docker-compose up
+- docker-compose.yml
+
+
+* JSON and YAML (Revision.)
+- --- to indicate begining of the YAMl.
+- We don't have to use quotes for YAMl.
+- List or array is represented by - on different line at indentation.
+- YAML parsing is slower than Json.
+
+
+* Compose file.
+- docker-compose.yml: Default name.
+    - version: "3.8", Version compatible with docker engine.
+    - services:
+        frontend: 
+        backend: 
+        db:
+- These above service names are arbittary.
+- Example:
+    - services:
+        frontend:
+            build: ./frontend (directory.)
+            ports:
+                - 3000:3000 (host: container mapping.)
+            enviornment:
+                - DB_URL=mongodb://db(hostname)/vidly
+                DB_URL: mongodb://db(hostname)/vidly (Another way to do it.)
+        api:
+            build: ./bakcend
+            ports:
+                - 3001:3001
+        db:
+            image: mongo:4.0-xenial (We don't want to run from dir but from image.)
+            ports:
+                -27017:27017
+            volumes: (Since we don't want it to store to temp vol of container.)
+                - vidly:/data/db (Outside the container.)
+
+        volumes:
+          vidly:
+
+- There are many properties listed on website.
+
+
+* Buildind images:
+- docker compose is build on top of docker engine.
+- docker-compose: will impact multiple applications.
+- --no-cache: to avoid weird issues.
+- --pull: to pull newer version of images.
+
+
+* Docker networking.
+- Docker compose will create a network.
+- docker network ls
+- bridge, host and none.
+- Containers on same network can talk to each other using their name.
+- docker ps and get running containers.
+- docker exec -it -u root 8c6 (container-id) sh
+- -u root for root user.
+- ping api (another container).
+- Docker comes with DNS server DNS resolver runs on each container.
+- api (application name) is resolved to IP address.
+- This resolution is onlhy available internal to container.
+- 27017: 27017 (host to container mapping.)
